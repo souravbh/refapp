@@ -1,0 +1,88 @@
+
+<div id = "SourceAccounts" ng-controller="tboaController">
+
+<div id = "header">
+<h2> {{header}} </h2>
+</div>
+
+<div id = "subheader">
+<h4> {{subheader}} </h4>
+</div>
+
+<div id = "contextualDisplay">
+<h4><small>{{contextualDisplayTop}} </small></h4>
+</div>
+
+
+
+<div id = "confirmView" ng-show="confirm" ng-include="confirm"></div>
+
+<div id = "recapView" ng-show="recap" ng-include="recap" class="ng-hide"></div>
+
+<div id = "inputView"  ng-show="input1" class="ng-hide">
+  
+ <div class="col-sm-2"></div>
+ <div>
+<h4> {{step}} </h4>
+<hr/>
+</div>
+
+
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="srcAc" class="col-sm-2 control-label">Source</label>
+    <div class="col-sm-8">
+
+      <select name = "srcAc" id = "srcAc" class="form-control" ng-model="account.sourceIndex">
+  		<option value = "{{account.identifier}}" ng-repeat="account in sourceAccounts">{{account.formatValue}}</option>
+	  </select>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="destAc" class="col-sm-2 control-label">Destination</label>
+    <div class="col-sm-8">
+
+    	<select name = "destAc" id = "destAc" class="form-control" ng-model="account.destIndex">
+  		<option value = "{{account.identifier}}" ng-repeat="account in destinationAccounts">{{account.formatValue}}</option>
+		</select>
+
+    </div>
+  </div>
+
+<div ng-include="moreOptions"></div>
+
+
+<div class = "form-group" id = "contextualDisplayBottom">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">	
+<h4><small>{{contextualDisplayBottom}} </small></h4>
+</div>
+</div>
+
+
+
+<div class="form-group">
+<div class="col-sm-2"></div>
+<div id="button container">
+<button type="button" class="btn btn-default">Reset All</button>
+<span ng-hide = "showMe">
+<button type="button" class="btn btn-primary" ng-click="submitAccount(account);showMe=true">Proceed</button>
+</span>
+<span ng-show = "showMe">
+<button type="button" class="btn btn-primary" ng-click="toRecap(account);showMe=false">Confirm</button>
+</span>
+
+</div>
+</div>
+
+
+
+</form>
+
+</div>
+</div>
+
+ </div>
+
